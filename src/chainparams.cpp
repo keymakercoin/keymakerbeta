@@ -51,8 +51,8 @@ static CBlock CreateGenesisBlock(const char *pszTimestamp, const CScript &genesi
     return genesis;
 }
 
-static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::string &devNetName, uint32_t nTime, uint32_t nNonce,
-                         uint32_t nBits, const CAmount &genesisReward) {
+static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::string &devNetName, uint32_t nTime, uint32_t nNonce, uint32_t nBits, const CAmount &genesisReward) 
+{
     assert(!devNetName.empty());
 
     CMutableTransaction txNew;
@@ -75,36 +75,7 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
     return genesis;
 }
 
-static void FindMainNetGenesisBlock(uint32_t nTime, uint32_t nBits, const char* network)
-{
-    CBlock block = CreateGenesisBlock(nTime, 0, nBits, 4, 5000 * COIN);
 
-    arith_uint256 bnTarget;
-    bnTarget.SetCompact(block.nBits);
-
-    for (uint32_t nNonce = 0; nNonce < UINT32_MAX; nNonce++) {
-        block.nNonce = nNonce;
-
-        uint256 hash = block.GetPOWHash();
-        if (nNonce % 48 == 0) {
-        	printf("\nrnonce=%d, pow is %s\n", nNonce, hash.GetHex().c_str());
-        }
-        if (UintToArith256(hash) <= bnTarget) {
-        	printf("\n%s net\n", network);
-        	printf("\ngenesis is %s\n", block.ToString().c_str());
-        	printf("\npow is %s\n", hash.GetHex().c_str());
-        	printf("\ngenesisNonce is %d\n", nNonce);
-        	std::cout << "Genesis Merkle " << block.hashMerkleRoot.GetHex() << std::endl;
-        	return;
-        }
-
-    }
-
-    // This is very unlikely to happen as we start the devnet with a very low difficulty. In many cases even the first
-    // iteration of the above loop will give a result already
-    error("%sNetGenesisBlock: could not find %s genesis block",network, network);
-    assert(false);
-}
 
 /**
  * Build the genesis block. Note that the output of its generation
@@ -145,6 +116,37 @@ static CBlock FindDevNetGenesisBlock(const CBlock &prevBlock, const CAmount &rew
     // This is very unlikely to happen as we start the devnet with a very low difficulty. In many cases even the first
     // iteration of the above loop will give a result already
     error("FindDevNetGenesisBlock: could not find devnet genesis block for %s", devNetName);
+    assert(false);
+}
+
+static void FindMainNetGenesisBlock(uint32_t nTime, uint32_t nBits, const char* network)
+{
+    CBlock block = CreateGenesisBlock(nTime, 0, nBits, 4, 5000 * COIN);
+
+    arith_uint256 bnTarget;
+    bnTarget.SetCompact(block.nBits);
+
+    for (uint32_t nNonce = 0; nNonce < UINT32_MAX; nNonce++) {
+        block.nNonce = nNonce;
+
+        uint256 hash = block.GetPOWHash();
+        if (nNonce % 48 == 0) {
+        	printf("\nrnonce=%d, pow is %s\n", nNonce, hash.GetHex().c_str());
+        }
+        if (UintToArith256(hash) <= bnTarget) {
+        	printf("\n%s net\n", network);
+        	printf("\ngenesis is %s\n", block.ToString().c_str());
+        	printf("\npow is %s\n", hash.GetHex().c_str());
+        	printf("\ngenesisNonce is %d\n", nNonce);
+        	std::cout << "Genesis Merkle " << block.hashMerkleRoot.GetHex() << std::endl;
+        	return;
+        }
+
+    }
+
+    // This is very unlikely to happen as we start the devnet with a very low difficulty. In many cases even the first
+    // iteration of the above loop will give a result already
+    error("%sNetGenesisBlock: could not find %s genesis block",network, network);
     assert(false);
 }
 
@@ -427,7 +429,7 @@ public:
         nDefaultPort = 10230;
         nPruneAfterHeight = 1000;
         FindMai
-        FindMainNetGenesisBlock(1614369600, 0x20001fff, "testnet");
+        FindMainNetGenesisBlock(1614369600, 0x20001fff,  "testnet");
         //genesis = CreateGenesisBlock(1711078237, 971, 0x20001fff, 4, 5000 * COIN);
         //VerifyGenesisPOW(genesis);
 
