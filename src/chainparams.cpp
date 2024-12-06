@@ -205,7 +205,7 @@ public:
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.smartnodePaymentFixedBlock = 6800;
 
-        consensus.nFutureForkBlock = 115000;
+        consensus.nFutureForkBlock = 116000;
                     //  Keymaker V17   115000 -  123000
         updateManager.Add
                 (   // V17 voting blocks 419328-427391 in mainnet, 4032 voting, 4032 grace period, active at 427392
