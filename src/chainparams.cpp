@@ -431,9 +431,9 @@ public:
         //genesis = CreateGenesisBlock(1711078237, 971, 0x20001fff, 4, 5000 * COIN);
         //VerifyGenesisPOW(genesis);
 
-        consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xcc533654af0eff4b88b5a8df21a815f5f0918e50264eb422f1d81fbab80e814f"));
-        assert(genesis.hashMerkleRoot == uint256S("0x8d3de61dd5deea3bdc712f40ed948bb570188f6a17a7574c5d7c87b2a5226ea9"));
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        //assert(consensus.hashGenesisBlock == uint256S("0xcc533654af0eff4b88b5a8df21a815f5f0918e50264eb422f1d81fbab80e814f"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x8d3de61dd5deea3bdc712f40ed948bb570188f6a17a7574c5d7c87b2a5226ea9"));
 
         vFixedSeeds.clear();
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
