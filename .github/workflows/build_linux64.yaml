@@ -1,4 +1,4 @@
-name: Keymaker Build
+name: Keymaker Build Linux64
 on:
   push:
     branches:
