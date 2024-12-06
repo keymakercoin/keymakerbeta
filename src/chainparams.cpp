@@ -208,7 +208,7 @@ public:
         //123063
         //consensus.nFutureForkBlock = 116092;
 
-       consensus.nFutureForkBlock = 120420;
+        consensus.nFutureForkBlock = 120420;
 
         updateManager.Add
                 (   // V17 voting blocks 419328-427391 in mainnet, 4032 voting, 4032 grace period, active at 427392
