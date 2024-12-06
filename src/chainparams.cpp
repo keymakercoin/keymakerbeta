@@ -206,8 +206,8 @@ public:
         consensus.smartnodePaymentFixedBlock = 6800;
 
         consensus.nFutureForkBlock = 115000;
+                    //  Keymaker V17   115000 -  123000
         updateManager.Add
-                     ///  Keymaker V17   115000 -  123000
                 (   // V17 voting blocks 419328-427391 in mainnet, 4032 voting, 4032 grace period, active at 427392
                         Update(EUpdate::DEPLOYMENT_V17, std::string("v17"), 0, 4032, 115000, 1, 3, 1, false,
                                VoteThreshold(80, 60, 5), VoteThreshold(0, 0, 1), false, 123000)
