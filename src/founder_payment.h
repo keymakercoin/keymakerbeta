@@ -16,10 +16,10 @@
 #include "primitives/transaction.h"
 #include "script/standard.h"
 #include <limits.h>
-using namespace std;
+//using namespace std;
 
-static const string DEFAULT_FOUNDER_ADDRESS = "kmqsVCyUELe4uV9A7UsFAckre8ceYHRUrT";
-static const string NEW_FOUNDER_ADDRESS = "kburnXXXXXXXXXXXXXXXXXXXXXXXXswNF4"; 
+static const std::string DEFAULT_FOUNDER_ADDRESS = "kmqsVCyUELe4uV9A7UsFAckre8ceYHRUrT";
+static const std::string NEW_FOUNDER_ADDRESS = "kburnXXXXXXXXXXXXXXXXXXXXXXXXswNF4"; 
 static const int NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT = 64975;
 struct FounderRewardStructure {
 	int blockHeight;
@@ -28,7 +28,7 @@ struct FounderRewardStructure {
 
 class FounderPayment {
 public:
-	FounderPayment(vector<FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const string &address = DEFAULT_FOUNDER_ADDRESS, const string &newAddress =  NEW_FOUNDER_ADDRESS, int newAddressStartBlock = NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
+	FounderPayment(vector<FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const std::string &address = DEFAULT_FOUNDER_ADDRESS, const std::string &newAddress =  NEW_FOUNDER_ADDRESS, int newAddressStartBlock = NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
 		this->founderAddress = address;
 		this->newFounderAddress = newAddress;
 		this->newFounderAddressStartBlock = newAddressStartBlock;
@@ -41,8 +41,8 @@ public:
 	bool IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward);
 	int getStartBlock() {return this->startBlock;}
 private:
-	string founderAddress;
-	string newFounderAddress;
+	std::string founderAddress;
+	std::string newFounderAddress;
 	int newFounderAddressStartBlock;
 	int startBlock;
 	vector<FounderRewardStructure> rewardStructures;
