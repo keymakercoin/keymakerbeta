@@ -428,7 +428,7 @@ public:
         pchMessageStart[3] = 0x6d; //m
         nDefaultPort = 10230;
         nPruneAfterHeight = 1000;
-        FindMai
+       
         FindMainNetGenesisBlock(1614369600, 0x20001fff,  "testnet");
         //genesis = CreateGenesisBlock(1711078237, 971, 0x20001fff, 4, 5000 * COIN);
         //VerifyGenesisPOW(genesis);
