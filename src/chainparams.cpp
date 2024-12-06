@@ -184,8 +184,7 @@ public:
         consensus.DIP0003Enabled = true;
         consensus.DIP0008Enabled = true;
         // consensus.DIP0003EnforcementHeight = 1047200;
-        consensus.powLimit = uint256S(
-                "00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
+        consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Keymaker: 1 day
         consensus.nPowTargetSpacing = 2 * 60; // Keymaker: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -216,7 +215,7 @@ public:
         );
 
         // The best chain should have at least this much work.
-       consensus.nMinimumChainWork = uint256S("0x0"); // 0
+        consensus.nMinimumChainWork = uint256S("0x0"); // 0
 
 
         // By default assume that the signatures in ancestors of this block are valid.
@@ -237,6 +236,7 @@ public:
         m_assumed_chain_state_size = 2;
         //FindMainNetGenesisBlock(1614369600, 0x20001fff, "main");
         genesis = CreateGenesisBlock(1667184351, 650, 0x1f00ffff, 4, 5000 * COIN);
+        VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x5fcce0f1bc672960c40ae71d73e23b47efbcdba3c94008a4848bedbd4c40b44b"));        
         assert(genesis.hashMerkleRoot == uint256S("0x8d3de61dd5deea3bdc712f40ed948bb570188f6a17a7574c5d7c87b2a5226ea9"));
@@ -749,7 +749,7 @@ public:
         UpdateBudgetParametersFromArgs(args);
 
         genesis = CreateGenesisBlock(1667184351, 650, 0x1f00ffff, 4, 5000 * COIN);
-
+        VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x5fcce0f1bc672960c40ae71d73e23b47efbcdba3c94008a4848bedbd4c40b44b"));        
         assert(genesis.hashMerkleRoot == uint256S("0x8d3de61dd5deea3bdc712f40ed948bb570188f6a17a7574c5d7c87b2a5226ea9"));
