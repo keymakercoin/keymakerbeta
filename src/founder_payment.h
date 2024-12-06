@@ -45,7 +45,7 @@ private:
 	std::string newFounderAddress;
 	int newFounderAddressStartBlock;
 	int startBlock;
-	vector<FounderRewardStructure> rewardStructures;
+	std::vector <FounderRewardStructure> rewardStructures;
 };
 
 
