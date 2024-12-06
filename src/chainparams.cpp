@@ -208,18 +208,18 @@ public:
         //123063
         //consensus.nFutureForkBlock = 116092;
 
-       consensus.nFutureForkBlock = 420420;
+       consensus.nFutureForkBlock = 120420;
 
         updateManager.Add
                 (   // V17 voting blocks 419328-427391 in mainnet, 4032 voting, 4032 grace period, active at 427392
-                        Update(EUpdate::DEPLOYMENT_V17, std::string("v17"), 0, 4032, 419328, 1, 3, 1, false,
-                               VoteThreshold(80, 60, 5), VoteThreshold(0, 0, 1), false, 427392)
+                        Update(EUpdate::DEPLOYMENT_V17, std::string("v17"), 0, 4032, 119328, 1, 3, 1, false,
+                               VoteThreshold(80, 60, 5), VoteThreshold(0, 0, 1), false, 127392)
                 );
         updateManager.Add(
                 Update(EUpdate::ROUND_VOTING, std::string("Round Voting"),
                        1,                        // bit
                        720,                     // roundSize
-                       905760,                    // startHeight
+                       205760,                    // startHeight
                        7,                        // votingPeriod
                        365,                      // votingMaxRounds
                        7,                        // gracePeriod
