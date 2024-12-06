@@ -28,7 +28,7 @@ struct FounderRewardStructure {
 
 class FounderPayment {
 public:
-	FounderPayment(vector<FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const std::string &address = DEFAULT_FOUNDER_ADDRESS, const std::string &newAddress =  NEW_FOUNDER_ADDRESS, int newAddressStartBlock = NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
+	FounderPayment(std::vector <FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const std::string &address = DEFAULT_FOUNDER_ADDRESS, const std::string &newAddress =  NEW_FOUNDER_ADDRESS, int newAddressStartBlock = NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
 		this->founderAddress = address;
 		this->newFounderAddress = newAddress;
 		this->newFounderAddressStartBlock = newAddressStartBlock;
