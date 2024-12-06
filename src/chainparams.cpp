@@ -204,18 +204,19 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.smartnodePaymentFixedBlock = 6800;
-        consensus.nFutureForkBlock = 420420;
 
+        consensus.nFutureForkBlock = 115000;
         updateManager.Add
+                     ///  Keymaker V17   115000 -  123000
                 (   // V17 voting blocks 419328-427391 in mainnet, 4032 voting, 4032 grace period, active at 427392
-                        Update(EUpdate::DEPLOYMENT_V17, std::string("v17"), 0, 4032, 419328, 1, 3, 1, false,
-                               VoteThreshold(80, 60, 5), VoteThreshold(0, 0, 1), false, 427392)
+                        Update(EUpdate::DEPLOYMENT_V17, std::string("v17"), 0, 4032, 115000, 1, 3, 1, false,
+                               VoteThreshold(80, 60, 5), VoteThreshold(0, 0, 1), false, 123000)
                 );
         updateManager.Add(
                 Update(EUpdate::ROUND_VOTING, std::string("Round Voting"),
                        1,                        // bit
                        720,                     // roundSize
-                       905760,                    // startHeight
+                       125000,                    // startHeight
                        7,                        // votingPeriod
                        365,                      // votingMaxRounds
                        7,                        // gracePeriod
