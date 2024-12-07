@@ -61,4 +61,24 @@ std::string EncodeBase58Check(const std::vector<unsigned char> &vchIn);
 [[nodiscard]] bool DecodeBase58Check(const std::string &str, std::vector<unsigned char> &vchRet);
 
 
+class CBitcoinAddress : public CBase58Data {
+public:
+    bool Set(const CKeyID &id);
+    bool Set(const CScriptID &id);
+    bool Set(const CTxDestination &dest);
+    bool IsValid() const;
+    bool IsValid(const CChainParams &params) const;
+
+    CBitcoinAddress() {}
+    CBitcoinAddress(const CTxDestination &dest) { Set(dest); }
+    CBitcoinAddress(const std::string& strAddress) { SetString(strAddress); }
+    CBitcoinAddress(const char* pszAddress) { SetString(pszAddress); }
+
+    CTxDestination Get() const;
+    bool GetKeyID(CKeyID &keyID) const;
+    bool GetIndexKey(uint160& hashBytes, int& type) const;
+    bool IsScript() const;
+};
+
+
 #endif // BITCOIN_BASE58_H
