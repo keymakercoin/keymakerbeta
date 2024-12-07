@@ -181,32 +181,7 @@ bool CBitcoinAddress::Set(const CKeyID& id)
     return true;
 }
 
-
-bool CBitcoinAddress::Set(const CScriptID& id)
-{
-    SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
-    return true;
-}
-
-bool CBitcoinAddress::Set(const CTxDestination& dest)
-{
-    return boost::apply_visitor(CBitcoinAddressVisitor(this), dest);
-}
-
-bool CBitcoinAddress::IsValid() const
-{
-    return IsValid(Params());
-}
-
-bool CBitcoinAddress::IsValid(const CChainParams& params) const
-{
-    bool fCorrectSize = vchData.size() == 20;
-    bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
-                         vchVersion == params.Base58Prefix(CChainParams::SCRIPT_ADDRESS);
-    return fCorrectSize && fKnownVersion;
-}
-
-
+ 
 CTxDestination CBitcoinAddress::Get() const
 {
     if (!IsValid())

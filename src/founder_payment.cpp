@@ -43,7 +43,7 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     CScript payee;
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 //    vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS))
-
+//Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS)
  	if (nBlockHeight < newFounderAddressStartBlock) {
 		CBitcoinAddress cbAddress(founderAddress);
 		payee = GetScriptForDestination(cbAddress.Get());
