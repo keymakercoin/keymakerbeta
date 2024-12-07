@@ -42,13 +42,20 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
 	txoutFounderRet = CTxOut();
     CScript payee;
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
-	if (nBlockHeight < newFounderAddressStartBlock) {
- 
-		payee = GetScriptForDestination(founderAddress.c_str);
+//    vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS))
+
+ 	if (nBlockHeight < newFounderAddressStartBlock) {
+		CBitcoinAddress cbAddress(founderAddress);
+		payee = GetScriptForDestination(cbAddress.Get());
 	}
 	else {
-  		payee = GetScriptForDestination(newFounderAddress.c_str);
+		CBitcoinAddress cbAddress(newFounderAddress);
+		payee = GetScriptForDestination(cbAddress.Get());
 	}
+
+
+
+
     // GET FOUNDER PAYMENT VARIABLES SETUP
 
     // split reward between miner ...
