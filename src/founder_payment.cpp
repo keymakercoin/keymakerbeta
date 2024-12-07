@@ -78,8 +78,9 @@ bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int heig
 	CScript newPayee;
 	// fill payee with the founder address
 	LogPrintf("FounderPayment::IsBlockPayeeValid -- height=%d to %s newFounderAddressStartBlock=%d \n", height, newFounderAddress.c_str(),newFounderAddressStartBlock);
-	payee = GetScriptForDestination(CBitcoinAddress(founderAddress).Get());
-	newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
+	//payee = GetScriptForDestination(CBitcoinAddress(founderAddress).Get());
+	//newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
+    CScript payee = GetScriptForDestination(DecodeDestination(founderAddress));
 
 	const CAmount founderReward = getFounderPaymentAmount(height, blockReward);
 	//std::cout << "founderReward = " << founderReward << endl;
