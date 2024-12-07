@@ -16,7 +16,7 @@
 #include <chainparams.h>
 #include <boost/foreach.hpp>
 #include <key_io.h>
-#include <base58pb.h>
+#include <base58bp.h>
 
 CAmount FounderPayment::getFounderPaymentAmount(int blockHeight, CAmount blockReward) {
 	 if (blockHeight <= startBlock){
