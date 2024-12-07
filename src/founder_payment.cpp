@@ -44,10 +44,10 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 	if (nBlockHeight < newFounderAddressStartBlock) {
  
-		payee = GetScriptForDestination(founderAddr);
+		payee = GetScriptForDestination(founderAddress.c_str);
 	}
 	else {
-  		payee = GetScriptForDestination(newFounderAddress);
+  		payee = GetScriptForDestination(newFounderAddress.c_str);
 	}
     // GET FOUNDER PAYMENT VARIABLES SETUP
 
