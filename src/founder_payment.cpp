@@ -16,7 +16,7 @@
 #include <chainparams.h>
 #include <boost/foreach.hpp>
 #include <key_io.h>
-#include <base58bp.h>
+ 
 
 CAmount FounderPayment::getFounderPaymentAmount(int blockHeight, CAmount blockReward) {
 	 if (blockHeight <= startBlock){
@@ -40,20 +40,24 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
 //
 //	}
 	txoutFounderRet = CTxOut();
-    CScript payee;
+    CTxDestination  founderAddr;
+
+
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 //    vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS))
 //Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS)
  	if (nBlockHeight < newFounderAddressStartBlock) {
-		CBitcoinAddress cbAddress(founderAddress);
-		payee = GetScriptForDestination(cbAddress.Get());
+		//CBitcoinAddress cbAddress(founderAddress);
+		//payee = GetScriptForDestination(cbAddress.Get());
+             CTxDestination founderAddr = DecodeDestination(founderAddress);
 	}
 	else {
-		CBitcoinAddress cbAddress(newFounderAddress);
-		payee = GetScriptForDestination(cbAddress.Get());
+		//CBitcoinAddress cbAddress(newFounderAddress);
+		//payee = GetScriptForDestination(cbAddress.Get());
+           CTxDestination founderAddr = DecodeDestination(newFounderAddress);
 	}
 
-
+    CScript payee = GetScriptForDestination(founderAddr);
 
 
     // GET FOUNDER PAYMENT VARIABLES SETUP
