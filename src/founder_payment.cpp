@@ -43,12 +43,19 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     CScript payee;
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 	if (nBlockHeight < newFounderAddressStartBlock) {
-		CBitcoinAddress cbAddress(founderAddress);
-		payee = GetScriptForDestination(cbAddress.Get());
+    CTxDestination founderAddr = DecodeDestination(founderAddress);
+    if (!IsValidDestination(founderAddr))
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
+                           strprintf("Invalid Keymaker Founder Address: %s", founderAddress.c_str()));
+
+		payee = GetScriptForDestination(founderAddr);
 	}
 	else {
-		CBitcoinAddress cbAddress(newFounderAddress);
-		payee = GetScriptForDestination(cbAddress.Get());
+        if (!IsValidDestination(newFounderAddress))
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
+                           strprintf("Invalid Keymaker Founder Address: %s", founderAddress.c_str()));
+		payee = GetScriptForDestination(newFounderAddress);
+
 	}
     // GET FOUNDER PAYMENT VARIABLES SETUP
 
@@ -68,8 +75,8 @@ bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int heig
 	CScript newPayee;
 	// fill payee with the founder address
 	LogPrintf("FounderPayment::IsBlockPayeeValid -- height=%d to %s newFounderAddressStartBlock=%d \n", height, newFounderAddress.c_str(),newFounderAddressStartBlock);
-	payee = GetScriptForDestination(CBitcoinAddress(founderAddress).Get());
-	newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
+	payee = GetScriptForDestination(founderAddress);
+	newPayee = GetScriptForDestination(newFounderAddress);
 
 	const CAmount founderReward = getFounderPaymentAmount(height, blockReward);
 	//std::cout << "founderReward = " << founderReward << endl;
