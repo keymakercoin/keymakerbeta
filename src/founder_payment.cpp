@@ -43,19 +43,11 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     CScript payee;
     // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 	if (nBlockHeight < newFounderAddressStartBlock) {
-    CTxDestination founderAddr = DecodeDestination(founderAddress);
-    if (!IsValidDestination(founderAddr))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                           strprintf("Invalid Keymaker Founder Address: %s", founderAddress.c_str()));
-
+ 
 		payee = GetScriptForDestination(founderAddr);
 	}
 	else {
-        if (!IsValidDestination(newFounderAddress))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                           strprintf("Invalid Keymaker Founder Address: %s", founderAddress.c_str()));
-		payee = GetScriptForDestination(newFounderAddress);
-
+  		payee = GetScriptForDestination(newFounderAddress);
 	}
     // GET FOUNDER PAYMENT VARIABLES SETUP
 
