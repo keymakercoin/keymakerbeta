@@ -74,7 +74,7 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
 }
 
 bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward) {
-	CScript payee;
+	//CScript payee;
 	CScript newPayee;
 	// fill payee with the founder address
 	LogPrintf("FounderPayment::IsBlockPayeeValid -- height=%d to %s newFounderAddressStartBlock=%d \n", height, newFounderAddress.c_str(),newFounderAddressStartBlock);
