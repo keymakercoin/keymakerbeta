@@ -19,8 +19,8 @@
 //using namespace std;
 
 static const std::string DEFAULT_FOUNDER_ADDRESS = "kmqsVCyUELe4uV9A7UsFAckre8ceYHRUrT";
-static const std::string NEW_FOUNDER_ADDRESS = "kburnXXXXXXXXXXXXXXXXXXXXXXXXswNF4"; 
-static const int NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT = 64975;
+static const std::string BURN_FOUNDER_ADDRESS = "kburnXXXXXXXXXXXXXXXXXXXXXXXXswNF4"; 
+static const int BURN_FOUNDER_ADDRESS_BLOCK_HEIGHT = 64975;
 struct FounderRewardStructure {
 	int blockHeight;
 	int rewardPercentage;
@@ -28,7 +28,7 @@ struct FounderRewardStructure {
 
 class FounderPayment {
 public:
-	FounderPayment(std::vector <FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const std::string &address = DEFAULT_FOUNDER_ADDRESS, const std::string &newAddress =  NEW_FOUNDER_ADDRESS, int newAddressStartBlock = NEW_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
+	FounderPayment(std::vector <FounderRewardStructure> rewardStructures = {}, int startBlock = 0, const std::string &address = DEFAULT_FOUNDER_ADDRESS, const std::string &newAddress =  BURN_FOUNDER_ADDRESS, int newAddressStartBlock = BURN_FOUNDER_ADDRESS_BLOCK_HEIGHT ) {
 		this->founderAddress = address;
 		this->newFounderAddress = newAddress;
 		this->newFounderAddressStartBlock = newAddressStartBlock;
@@ -38,7 +38,7 @@ public:
 	~FounderPayment(){};
 	CAmount getFounderPaymentAmount(int blockHeight, CAmount blockReward);
 	void FillFounderPayment(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutFounderRet);
-	bool IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward, int nBlockHeight);
+	bool IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward, int nBlockHeight,);
 	int getStartBlock() {return this->startBlock;}
 private:
 	std::string founderAddress;
