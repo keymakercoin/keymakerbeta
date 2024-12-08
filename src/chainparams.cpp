@@ -285,16 +285,23 @@ public:
        //  Smartnodes rewards start at block 5762
         consensus.nCollaterals = SmartnodeCollaterals(
 
-          { {1000, 100 * COIN}, // STARTING HEIGHT 1
-            {5000, 1000 * COIN}, // STARTING HEIGHT 1001
-            {10000, 5000 * COIN},   // STARTING HEIGHT  5001    
-            {210240, 600000 * COIN}, // STARTING HEIGHT 10001 
-            {420480, 700000 * COIN},  // STARTING HEIGHT 210241
-            {630720, 800000 * COIN}, // STARTING HEIGHT 420481
-            {840960, 900000 * COIN}, // STARTING HEIGHT 630721
-            {1051200, 1000000 * COIN}, // STARTING HEIGHT 840961
-            {1261440, 1200000 * COIN}, // STARTING HEIGHT 1051201 
-            {INT_MAX, 1500000 * COIN} // STARTING HEIGHT 1261441  
+          { {1000, 100 * COIN}, 
+            {5000, 1000 * COIN}, 
+            {10000, 5000 * COIN},    
+            {210240, 600000 * COIN}, 
+            {420480, 1700000 * COIN},  
+            {630720, 1800000 * COIN}, 
+            {840960, 1900000 * COIN}, 
+            {1051200, 11000000 * COIN}, 
+            {1261440, 11200000 * COIN}, 
+            {INT_MAX, 11500000 * COIN} 
+         
+            //{420480, 700000 * COIN},  
+            //{630720, 800000 * COIN}, 
+            //{840960, 900000 * COIN}, 
+            //{1051200, 1000000 * COIN}, 
+            //{1261440, 1200000 * COIN}, 
+            //{INT_MAX, 1500000 * COIN} 
           },
           { {5761, 0}, {INT_MAX, 20} }   
         );
