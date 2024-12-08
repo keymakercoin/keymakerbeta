@@ -49,12 +49,12 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
  	if (nBlockHeight < newFounderAddressStartBlock) {
 		//CBitcoinAddress cbAddress(founderAddress);
 		//payee = GetScriptForDestination(cbAddress.Get());
-             CTxDestination founderAddr = DecodeDestination(founderAddress);
+            founderAddr = DecodeDestination(founderAddress);
 	}
 	else {
 		//CBitcoinAddress cbAddress(newFounderAddress);
 		//payee = GetScriptForDestination(cbAddress.Get());
-           CTxDestination founderAddr = DecodeDestination(newFounderAddress);
+           founderAddr = DecodeDestination(newFounderAddress);
 	}
 
     CScript payee = GetScriptForDestination(founderAddr);
@@ -74,13 +74,21 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
 }
 
 bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward) {
-	//CScript payee;
+	CScript payee;
 	CScript newPayee;
 	// fill payee with the founder address
 	LogPrintf("FounderPayment::IsBlockPayeeValid -- height=%d to %s newFounderAddressStartBlock=%d \n", height, newFounderAddress.c_str(),newFounderAddressStartBlock);
 	//payee = GetScriptForDestination(CBitcoinAddress(founderAddress).Get());
 	//newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
-    CScript payee = GetScriptForDestination(DecodeDestination(founderAddress));
+    //CScript payee = GetScriptForDestination(DecodeDestination(founderAddress));
+
+	if (nBlockHeight < newFounderAddressStartBlock) {
+		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
+            payee = GetScriptForDestination(DecodeDestination(founderAddress));
+	} else {
+		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
+            payee = GetScriptForDestination(DecodeDestination(newFounderAddress));
+	}
 
 	const CAmount founderReward = getFounderPaymentAmount(height, blockReward);
 	//std::cout << "founderReward = " << founderReward << endl;
