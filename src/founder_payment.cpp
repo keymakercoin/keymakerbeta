@@ -82,11 +82,9 @@ bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int heig
 	//newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
     //CScript payee = GetScriptForDestination(DecodeDestination(founderAddress));
 
-	if (nBlockHeight < newFounderAddressStartBlock) {
-		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
+	if (height < newFounderAddressStartBlock) {
             payee = GetScriptForDestination(DecodeDestination(founderAddress));
 	} else {
-		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
             payee = GetScriptForDestination(DecodeDestination(newFounderAddress));
 	}
 
