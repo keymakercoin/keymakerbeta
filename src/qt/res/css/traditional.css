@@ -25,7 +25,7 @@ Loaded in GUIUtil::loadStyleSheet() in guitil.cpp.
 #008de4
 #047ac2
 #222222
-#a84832
+#3a32a8
 #c79304
 #ccfafafa
 
@@ -242,7 +242,7 @@ QWidget#OverviewPage QLabel#labelAlerts {
 QWidget .QFrame#frame .QLabel#labelWalletStatus, /* Wallet Sync Status */
 QWidget .QFrame#frameCoinJoin .QLabel#labelCoinJoinSyncStatus, /* CoinJoin Sync Status */
 QWidget .QFrame#frame_2 .QLabel#labelTransactionsStatus { /* Recent Transactions Sync Status */
-    color: #a84832;
+    color: #3a32a8;
 }
 
 QWidget .QFrame#frame_2 QListView { /* Transaction List */
@@ -261,7 +261,7 @@ QDialog#SendCoinsDialog QLabel#labelBalance {
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #3a32a8;
 }
 
 /******************************************************
@@ -274,7 +274,7 @@ QDialog#SendAssetsDialog QLabel#labelBalance {
 }
 
 QDialog#SendAssetsDialog .QFrame#frameAssetControl .QLabel#labelAssetControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #3a32a8;
 }
 
 /******************************************************
@@ -287,7 +287,7 @@ QDialog#CreateAssetsDialog QLabel#labelBalance {
 }
 
 QDialog#CreateAssetsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #3a32a8;
 }
 
 /******************************************************
