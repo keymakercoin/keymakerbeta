@@ -67,7 +67,7 @@ namespace GUIUtil {
         /* Eye-friendly green color */
         GREEN,
         /* Eye-friendly orange color */
-        ORANGE,
+        PURPLE,
         /* Primary color */
         PRIMARY,
         /* Eye-friendly red color, e.g. Transaction list -- negative amount */
