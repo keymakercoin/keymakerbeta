@@ -106,7 +106,7 @@ QComboBox:focus,
 QPlainTextEdit:focus,
 QLineEdit:focus {
     background-color: #E5CFC9;
-    border-color: #FF6B46;
+    border-color: #c7c7c7;
 }
 
 BitcoinAmountField:disabled,
@@ -176,7 +176,7 @@ QCalendarWidget,
 #qt_calendar_monthbutton:hover,
 #qt_calendar_yearbutton:hover {
     background-color: #FFFFFF;
-    color: #FF6B46;
+    color: #979797;
 }
 
 #qt_calendar_prevmonth {
@@ -197,7 +197,7 @@ QCalendarWidget QWidget {
 QCalendarWidget QAbstractItemView:enabled {
     color: #111522;
     selection-background-color: #C2C0C0;
-    selection-color: #FF6B46;
+    selection-color: #d1d1d1;
 }
 
 QCalendarWidget QAbstractItemView:disabled {
@@ -258,7 +258,7 @@ QComboBox::item:alternate {
 
 QComboBox::item:selected {
     background-color: #FFFFFF;
-    border: 1px solid #FF6B46;
+    border: 1px solid #9b9b9b;
     border-radius: 2px;
 }
 
@@ -285,7 +285,7 @@ QHeaderView::section { /* Table Header Sections */
 }
 
 QHeaderView::section:hover { /* Table Header Sections */
-    background-color: #FF6B46;
+    background-color: #8d8d8d;
     color: #111522;
 }
 
@@ -332,12 +332,12 @@ QMenuBar {
 }
 
 QMenuBar::item:hover {
-  color: #B74426;
+  color: #797979;
 }
 
 QMenuBar::item:selected {
   background-color: #EFBDB1;
-  color: #B74426;
+  color: #666666;
 }
 
 /******************************************************
@@ -366,16 +366,16 @@ QPushButton
 ******************************************************/
 
 QPushButton {
-    background-color: #FF6B46;
+    background-color: #8b8b8b;
     color: #111522;
 }
 
 QPushButton:hover {
-    background-color: #D1593A;
+    background-color: #8d8d8d;
 }
 
 QPushButton:pressed {
-    background-color: #FF6B46;
+    background-color: #a5a5a5;
 }
 
 QPushButton:disabled {
@@ -513,7 +513,7 @@ QPushButton - Special case, tabbar replacement buttons
 #btnSignMessage:hover:checked,
 #btnVerifyMessage:hover:checked {
     border: none;
-    color: #B74426;
+    color: #9c9c9c;
 }
 
 /* Debug window buttons */
@@ -553,7 +553,7 @@ QPushButton - Special case, tabbar replacement buttons
 #btnSignMessage:checked,
 #btnVerifyMessage:checked {
     border: none;
-    color: #B74426;
+    color: #a8a8a8;
 }
 
 /******************************************************
@@ -602,10 +602,10 @@ QSlider
 ******************************************************/
 
 QSlider::handle:horizontal {
-	background-color: #B74426;
+	background-color: #a7a7a7;
 }
 QSlider::handle:horizontal:hover {
-	background-color: #FF6B46;
+	background-color: #f0f0f0;
 }
 QSlider::sub-page:horizontal {
 	background-color: #C2C0C0;
@@ -620,7 +620,7 @@ QStatusBar
 
 QStatusBar {
     background-color: #FFFFFF;
-    color: #B74426;
+    color: #9e9e9d;
 }
 
 /******************************************************
@@ -701,7 +701,7 @@ QToolBar > QToolButton:hover:!checked {
 QToolBar > QToolButton:checked {
     background-color: #EFBDB1;
     border: 1px solid #EFBDB1;
-    color: #B74426;
+    color: #a8a8a8;
 }
 
 QToolBar > QToolButton:disabled {
@@ -967,11 +967,11 @@ RPCConsole QTableView {
 }
 
 #rpcAutoCompleter::item:hover {
-    border: 1px solid #FF6B46;
+    border: 1px solid #e0e0e0;
 }
 
 #rpcAutoCompleter::item:selected {
-    border: 1px solid #FF6B46;
+    border: 1px solid #fafafa;
     color: #111522;
 }
 

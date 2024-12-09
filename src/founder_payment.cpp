@@ -66,9 +66,9 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     txoutFounderRet = CTxOut(founderPayment, payee);
     txNew.vout.push_back(txoutFounderRet);
 	if (nBlockHeight < newFounderAddressStartBlock) {
-		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
+	//	LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
 	} else {
-		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
+	//	LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
 	}
 }
 
