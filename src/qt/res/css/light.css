@@ -34,7 +34,7 @@ Loaded in GUIUtil::loadStyleSheet() in guitil.cpp.
 #D1593A
 #D9D9D9
 #E5CFC9
-#EFBDB1
+#b5b1ef
 #F32349
 #F3DFD9
 #FF6B46
@@ -168,7 +168,7 @@ QCalendarWidget,
 #qt_calendar_nextmonth,
 #qt_calendar_monthbutton,
 #qt_calendar_yearbutton {
-    border-color: #EFBDB1;
+    border-color: #b5b1ef;
 }
 
 #qt_calendar_prevmonth:hover,
@@ -191,7 +191,7 @@ QCalendarWidget QToolButton {
 }
 
 QCalendarWidget QWidget {
-    alternate-background-color: #EFBDB1;
+    alternate-background-color: #b5b1ef;
 }
 
 QCalendarWidget QAbstractItemView:enabled {
@@ -280,7 +280,7 @@ QHeaderView
 ******************************************************/
 
 QHeaderView::section { /* Table Header Sections */
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
     color: #111522;
 }
 
@@ -327,7 +327,7 @@ QMenuBar
 ******************************************************/
 
 QMenuBar {
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
     color: #111522;
 }
 
@@ -336,7 +336,7 @@ QMenuBar::item:hover {
 }
 
 QMenuBar::item:selected {
-  background-color: #EFBDB1;
+  background-color: #b5b1ef;
   color: #666666;
 }
 
@@ -676,13 +676,13 @@ QToolBar / QToolButton
 ******************************************************/
 
 QToolBar {
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
 }
 
 QToolBar > QToolButton {
     border: none;
-    border: 1px solid #EFBDB1;
-    background-color: #EFBDB1;
+    border: 1px solid #b5b1ef;
+    background-color: #b5b1ef;
     color: #111522;
     padding-left: 15px;
     padding-right: 15px;
@@ -692,21 +692,21 @@ QToolBar > QToolButton {
 }
 
 QToolBar > QToolButton:hover:!checked {
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
     border: 1px solid #FF6B46;
     border-radius: 5px;
     color: #111522;
 }
 
 QToolBar > QToolButton:checked {
-    background-color: #EFBDB1;
-    border: 1px solid #EFBDB1;
+    background-color: #b5b1ef;
+    border: 1px solid #b5b1ef;
     color: #a8a8a8;
 }
 
 QToolBar > QToolButton:disabled {
-    background-color: #EFBDB1;
-    border: 1px solid #EFBDB1;
+    background-color: #b5b1ef;
+    border: 1px solid #b5b1ef;
     color: #646161;
 }
 
@@ -869,7 +869,7 @@ HelpMessageDialog
 ******************************************************/
 
 HelpMessageDialog QWidget#scrollAreaWidgetContents {
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
     border-color: #D9D9D9;
 }
 
@@ -884,7 +884,7 @@ ModalOverlay
 ******************************************************/
 
 QWidget#bgWidget { /* The frame overlaying the overview-page */
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
 }
 
 QWidget#contentWidget { /* The actual content with the text/buttons/etc... */
@@ -942,7 +942,7 @@ QWidget#RPCConsole { /* RPC Console Dialog Box */
 }
 
 QWidget#RPCConsole #detailWidget{
-    background-color: #EFBDB1;
+    background-color: #b5b1ef;
 }
 
 QWidget#RPCConsole .QGroupBox #line { /* Network In Line */
