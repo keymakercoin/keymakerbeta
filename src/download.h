@@ -5,8 +5,6 @@
 #ifndef KEYMAKER_UPLOADDOWNLOAD_H
 #define KEYMAKER_UPLOADDOWNLOAD_H
 #include <string>
-#include <QWidget>
-#include <QLineEdit>
 #include <iostream>
 #include <vector>
 
