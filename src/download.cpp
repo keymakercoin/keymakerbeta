@@ -7,8 +7,7 @@
 #include <logging.h>
 
 #include <curl/curl.h>
-#include <QString>
-#include <QFileDialog>
+#include <stdio.h>
 
 
 size_t writeCallback(void* contents, size_t size, size_t nmemb, void* userp) {
@@ -27,7 +26,7 @@ size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
 }
 
 
-void downloadBanList() {
+void GetBanList() {
     CURL* curl;
     CURLcode res;
 

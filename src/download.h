@@ -12,5 +12,5 @@ size_t writeCallback(void* contents, size_t size, size_t nmemb, void* userp);
 size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata);
 
 //void downloadFile(const std::string& cid, const std::string& response_data);
-void downloadBanList();
+void GetBanList();
 #endif //KEYMAKER_UPLOADDOWNLOAD_H
