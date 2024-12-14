@@ -43,7 +43,7 @@ void downloadFile() {
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
     if (curl) {
-        std::string downUrl = "https:/github.com/banlist.dat/" 
+        std::string downUrl = "https:/explorer.keymaker.cc/banlist.dat/" 
         //gArgs.GetArg("-ipfsservice", DEFAULT_IPFS_SERVICE_URL) + "get/" + cid;
         curl_easy_setopt(curl, CURLOPT_URL, downUrl.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeCallback);
