@@ -26,6 +26,7 @@ BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t 
         LogPrint(BCLog::NET, "Loaded %d banned node ips/subnets from banlist.dat  %dms\n",
                  m_banned.size(), GetTimeMillis() - n_start);
     } else {
+
         LogPrintf("Recreating banlist.dat\n");
         SetBannedSetDirty(true); // force write
         DumpBanlist();
@@ -193,6 +194,18 @@ void BanMan::SweepBanned() {
     if (notify_ui && m_client_interface) {
         m_client_interface->BannedListChanged();
     }
+}
+
+
+// Callback function to write received data to a file
+size_t BanMan::WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
+    std::ofstream* file = static_cast<std::ofstream*>(userdata);
+    size_t written = 0;
+    if (file->is_open()) {
+        file->write(static_cast<char*>(ptr), size * nmemb);
+        written = size * nmemb;
+    }
+    return written;
 }
 
 bool BanMan::BannedSetIsDirty() {

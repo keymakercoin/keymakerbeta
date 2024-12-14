@@ -66,7 +66,8 @@ public:
 
 private:
     void SetBanned(const banmap_t &banmap);
-
+    
+    size_t WriteToFile();
     bool BannedSetIsDirty();
 
     //!set the "dirty" flag for the banlist
