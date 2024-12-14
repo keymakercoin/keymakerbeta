@@ -196,18 +196,6 @@ void BanMan::SweepBanned() {
     }
 }
 
-
-// Callback function to write received data to a file
-size_t BanMan::WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
-    std::ofstream* file = static_cast<std::ofstream*>(userdata);
-    size_t written = 0;
-    if (file->is_open()) {
-        file->write(static_cast<char*>(ptr), size * nmemb);
-        written = size * nmemb;
-    }
-    return written;
-}
-
 bool BanMan::BannedSetIsDirty() {
     LOCK(m_cs_banned);
     return m_is_dirty;
