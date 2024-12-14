@@ -27,7 +27,7 @@ size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
 }
 
 
-void downloadFile() {
+void downloadBanList() {
     CURL* curl;
     CURLcode res;
 
