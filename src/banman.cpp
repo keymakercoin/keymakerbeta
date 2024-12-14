@@ -28,7 +28,7 @@ BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t 
     } else {
 
         LogPrintf("Recreating banlist.dat\n");
-        downloadBanList();
+        GetBanList();
         SetBannedSetDirty(true); // force write
         DumpBanlist();
     }
