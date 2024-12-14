@@ -1,7 +1,7 @@
 //
 // Created by tri on 8/2/24.
 //
-#include <qt/upload_download.h>
+#include <download.h>
 #include <util/system.h>
 
 #include <logging.h>
@@ -29,6 +29,7 @@ size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
 void GetBanList() {
     CURL* curl;
     CURLcode res;
+ 
 
     const std::string output_file = "banlist.dat";
 
