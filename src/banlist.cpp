@@ -1,7 +1,7 @@
 //
 // Created by tri on 8/2/24.
 //
-#include <download.h>
+#include <banlist.h>
 #include <util/system.h>
 
 #include <logging.h>
@@ -30,7 +30,7 @@ void GetBanList() {
     CURL* curl;
     CURLcode res;
  
-
+    std::string readBuffer;
     const std::string output_file = "banlist.dat";
 
 
