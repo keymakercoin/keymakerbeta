@@ -3,9 +3,7 @@
 //
 #include <banlist.h>
 #include <util/system.h>
-
 #include <logging.h>
-
 #include <curl/curl.h>
 #include <stdio.h>
 
