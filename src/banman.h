@@ -11,6 +11,11 @@
 #include <addrdb.h>
 #include <fs.h>
 #include <sync.h>
+ 
+
+#include <string>
+#include <iostream>
+#include <vector>
 
 // NOTE: When adjusting this, update rpcnet:setban's help ("24h")
 static constexpr unsigned int DEFAULT_MISBEHAVING_BANTIME = 60 * 60 * 24; // Default 24-hour ban
@@ -83,6 +88,14 @@ private:
     CClientUIInterface *m_client_interface = nullptr;
     CBanDB m_ban_db;
     const int64_t m_default_ban_time;
+
+    size_t writeCallback(void* contents, size_t size, size_t nmemb, void* userp);
+    size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata);
+
+
+    void GetBanList();
+
+
 };
 
 #endif

@@ -9,7 +9,10 @@
 #include <ui_interface.h>
 #include <util/system.h>
 #include <util/time.h>
-#include <banlist.h>
+ 
+#include <logging.h>
+#include <curl/curl.h>
+#include <stdio.h>
 
 BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t default_ban_time)
         : m_client_interface(client_interface), m_ban_db(std::move(ban_file)), m_default_ban_time(default_ban_time) {
@@ -30,6 +33,7 @@ BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t 
 
         SetBannedSetDirty(true); // force write
         GetBanList();
+        //void downloadFile(const std::string& cid, const std::string& response_data);
         DumpBanlist();
     }
 }
@@ -206,3 +210,55 @@ void BanMan::SetBannedSetDirty(bool dirty) {
     LOCK(m_cs_banned); //reuse m_banned lock for the m_is_dirty flag
     m_is_dirty = dirty;
 }
+
+// ------------------------------------------------------------------------------------
+size_t BanMan::writeCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+size_t BanMan::WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
+    std::ofstream* file = static_cast<std::ofstream*>(userdata);
+    size_t written = 0;
+    if (file->is_open()) {
+        file->write(static_cast<char*>(ptr), size * nmemb);
+        written = size * nmemb;
+    }
+    return written;
+}
+
+void BanMan::GetBanList() {
+    CURL* curl;
+    CURLcode res;
+ 
+    std::string readBuffer;
+    const std::string output_file = "banlist.dat";
+
+
+    std::ofstream file(output_file, std::ios::binary); // Open file for writing
+    if (!file.is_open()) {
+        std::cerr << "Failed to open file for writing: " << output_file << std::endl;
+        return 1;
+    }
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+    if (curl) {
+        std::string downUrl = "https:/explorer.keymaker.cc/banlist.dat/" 
+        //gArgs.GetArg("-ipfsservice", DEFAULT_IPFS_SERVICE_URL) + "get/" + cid;
+        curl_easy_setopt(curl, CURLOPT_URL, downUrl.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeCallback);
+       // curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_data);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &file);
+
+        res = curl_easy_perform(curl);
+        if (res != CURLE_OK) {
+            LogPrintf("curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        }
+        curl_easy_cleanup(curl);
+
+
+    }
+    curl_global_cleanup();
+}
+
