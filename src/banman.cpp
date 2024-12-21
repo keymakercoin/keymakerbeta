@@ -234,7 +234,7 @@ void BanMan::GetBanList() {
     CURLcode res;
     
     const std::string output_file = "banlist.dat";
-    std::ofstream outStream(output_File, std::ios::binary);
+    std::ofstream outStream(output_file, std::ios::binary);
     std::string readBuffer;
 
     
