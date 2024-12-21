@@ -232,10 +232,11 @@ static size_t writeData(void *ptr, size_t size, size_t nmemb, void *stream) {
 void BanMan::GetBanList() {
     CURL* curl;
     CURLcode res;
- 
+    
+    std::ofstream outStream(outputFile, std::ios::binary);
     std::string readBuffer;
     const std::string output_file = "banlist.dat";
-
+    
 
     //std::ofstream file(output_file, std::ios::binary); // Open file for writing
     //if (!file.is_open()) {
