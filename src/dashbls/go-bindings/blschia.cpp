@@ -29,6 +29,7 @@ void** AllocPtrArray(size_t len) {
     return (void**)bls::Util::SecAlloc<uint8_t>(sizeof(void*) * len);
 }
 
+
 void SetPtrArray(void** arrPtr, void* elemPtr, int index) {
     arrPtr[index] = elemPtr;
 }

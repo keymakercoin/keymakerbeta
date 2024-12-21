@@ -89,9 +89,9 @@ private:
     CBanDB m_ban_db;
     const int64_t m_default_ban_time;
 
-    size_t writeCallback(void* contents, size_t size, size_t nmemb, void* userp);
+ 
     //size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata);
-    size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata);
+ 
 
     void GetBanList();
 
