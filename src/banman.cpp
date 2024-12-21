@@ -217,16 +217,7 @@ void BanMan::SetBannedSetDirty(bool dirty) {
 //    return size * nmemb;
 //}
 
-size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
-    std::ofstream* file = static_cast<std::ofstream*>(userdata);
-    size_t written = 0;
-    if (file->is_open()) {
-        file->write(static_cast<char*>(ptr), size * nmemb);
-        written = size * nmemb;
-    }
-    return written;
-}
-
+ 
 size_t BanMan::WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
     std::ofstream* file = static_cast<std::ofstream*>(userdata);
     size_t written = 0;
