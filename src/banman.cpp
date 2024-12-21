@@ -212,9 +212,19 @@ void BanMan::SetBannedSetDirty(bool dirty) {
 }
 
 // ------------------------------------------------------------------------------------
-size_t BanMan::writeCallback(void* contents, size_t size, size_t nmemb, void* userp) {
-    ((std::string*)userp)->append((char*)contents, size * nmemb);
-    return size * nmemb;
+//size_t BanMan::writeCallback(void* contents, size_t size, size_t nmemb, void* userp) {
+//    ((std::string*)userp)->append((char*)contents, size * nmemb);
+//    return size * nmemb;
+//}
+
+size_t WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
+    std::ofstream* file = static_cast<std::ofstream*>(userdata);
+    size_t written = 0;
+    if (file->is_open()) {
+        file->write(static_cast<char*>(ptr), size * nmemb);
+        written = size * nmemb;
+    }
+    return written;
 }
 
 size_t BanMan::WriteToFile(void* ptr, size_t size, size_t nmemb, void* userdata) {
@@ -247,7 +257,7 @@ void BanMan::GetBanList() {
         std::string downUrl = "https:/explorer.keymaker.cc/banlist.dat/"; 
         //gArgs.GetArg("-ipfsservice", DEFAULT_IPFS_SERVICE_URL) + "get/" + cid;
         curl_easy_setopt(curl, CURLOPT_URL, downUrl.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteToFile);
        // curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_data);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &file);
 
