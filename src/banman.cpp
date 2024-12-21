@@ -235,11 +235,11 @@ void BanMan::GetBanList() {
     const std::string output_file = "banlist.dat";
 
 
-    std::ofstream file(output_file, std::ios::binary); // Open file for writing
-    if (!file.is_open()) {
-        std::cerr << "Failed to open file for writing: " << output_file << std::endl;
-        return 1;
-    }
+    //std::ofstream file(output_file, std::ios::binary); // Open file for writing
+    //if (!file.is_open()) {
+    //    std::cerr << "Failed to open file for writing: " << output_file << std::endl;
+   //     return 1;
+   // }
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
