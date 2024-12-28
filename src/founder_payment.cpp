@@ -50,8 +50,7 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
 		//CBitcoinAddress cbAddress(founderAddress);
 		//payee = GetScriptForDestination(cbAddress.Get());
             founderAddr = DecodeDestination(founderAddress);
-	}
-	else {
+	} else {
 		//CBitcoinAddress cbAddress(newFounderAddress);
 		//payee = GetScriptForDestination(cbAddress.Get());
            founderAddr = DecodeDestination(newFounderAddress);
@@ -66,27 +65,27 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     txNew.vout[0].nValue -= founderPayment;
     txoutFounderRet = CTxOut(founderPayment, payee);
     txNew.vout.push_back(txoutFounderRet);
-//	if (nBlockHeight < newFounderAddressStartBlock) {
-//		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
-//	} else {
-//		LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
-//	}
+	if (nBlockHeight < newFounderAddressStartBlock) {
+	//	LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
+	} else {
+	//	LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, newFounderAddress.c_str());
+	}
 }
 
 bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward) {
 	CScript payee;
-	CScript newPayee;
+    CScript newPayee;
 	// fill payee with the founder address
 	//LogPrintf("FounderPayment::IsBlockPayeeValid -- height=%d to %s newFounderAddressStartBlock=%d \n", height, newFounderAddress.c_str(),newFounderAddressStartBlock);
 	//payee = GetScriptForDestination(CBitcoinAddress(founderAddress).Get());
 	//newPayee = GetScriptForDestination(CBitcoinAddress(newFounderAddress).Get());
     //CScript payee = GetScriptForDestination(DecodeDestination(founderAddress));
 
-	if (height < newFounderAddressStartBlock) {
+	//if (height < newFounderAddressStartBlock) {
             payee = GetScriptForDestination(DecodeDestination(founderAddress));
-	} else {
-            payee = GetScriptForDestination(DecodeDestination(newFounderAddress));
-	}
+	//} else {
+            newPayee = GetScriptForDestination(DecodeDestination(newFounderAddress));
+	//}
 
 	const CAmount founderReward = getFounderPaymentAmount(height, blockReward);
 	//std::cout << "founderReward = " << founderReward << endl;

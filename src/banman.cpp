@@ -9,7 +9,7 @@
 #include <ui_interface.h>
 #include <util/system.h>
 #include <util/time.h>
-
+ 
 
 BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t default_ban_time)
         : m_client_interface(client_interface), m_ban_db(std::move(ban_file)), m_default_ban_time(default_ban_time) {
@@ -26,6 +26,7 @@ BanMan::BanMan(fs::path ban_file, CClientUIInterface *client_interface, int64_t 
         LogPrint(BCLog::NET, "Loaded %d banned node ips/subnets from banlist.dat  %dms\n",
                  m_banned.size(), GetTimeMillis() - n_start);
     } else {
+
         LogPrintf("Recreating banlist.dat\n");
         SetBannedSetDirty(true); // force write
         DumpBanlist();
